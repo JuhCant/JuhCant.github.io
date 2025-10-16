@@ -6,6 +6,16 @@
   <title>Juliana Cantanhede — Design, Arte</title>
   <style>
 
+    /* Additional styles for logo */
+    .logo img {
+      height: 44px;
+      width: auto;
+      display: block;
+    }
+    .logo {
+      display: inline-block;
+      flex: 0 0 auto;
+    }
     /* HERO / SLIDES (fade) */
     .hero {
       position: relative;
@@ -26,15 +36,10 @@
     .hero .slide {
       position: absolute;
       inset: 0;
-      background-size: cover;
       background-position: center;
       opacity: 0;
       transition: opacity 1s ease-in-out;
-      will-change: opacity;
-    }
-
-    .hero .slide.active {
-      opacity: 1;
+      gap: 28px;
       z-index: 2;
     }
 
@@ -154,7 +159,9 @@
 <body>
 
 <header>
-  <h1>Juliana Cantanhede</h1>
+  <a href="#home" class="logo" aria-label="Página inicial">
+    <img src="images/logo.png" alt="Cantanhede" />
+  </a>
   <nav aria-label="Menu principal">
     <a href="#sobre">Sobre mim</a>
     <a href="#social">Social Media</a>
