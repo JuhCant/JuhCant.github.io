@@ -5,6 +5,68 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Juliana Cantanhede — Design, Arte</title>
   <style>
+    /* HERO / SLIDES */
+    .hero {
+      position: relative;
+      height: 80vh;
+      min-height: 520px;
+      display: flex;
+      align-items: center;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .hero .slides {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      width: 300%; /* três slides */
+      transition: transform 1s ease;
+    }
+
+    .hero .slide {
+      flex: 0 0 33.3333%;
+      background-size: cover;
+      background-position: center;
+      height: 100%;
+    }
+
+    .hero .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.35) 50%, rgba(0,0,0,0) 100%);
+      mix-blend-mode: multiply;
+      pointer-events: none;
+    }
+
+    .hero .content {
+      position: relative;
+      z-index: 5;
+      max-width: 700px;
+      padding-left: 80px;
+    }
+
+    .hero .kicker {
+      font-size: 0.9rem;
+      color: #333;
+      margin-bottom: 12px;
+    }
+
+    .hero .title {
+      font-size: 4.2rem;
+      color: #2f5b4f; /* verde suave semelhante ao exemplo */
+      margin: 0;
+      font-weight: 400;
+    }
+
+    /* Responsividade */
+    @media (max-width: 900px) {
+      .hero .content { padding-left: 30px; }
+      .hero .title { font-size: 2.4rem; }
+      .hero .slides { width: 300%; }
+      .hero .slide { flex-basis: 100%; }
+    }
+
     body {
       margin: 0;
       font-family: 'Helvetica Neue', sans-serif;
@@ -84,6 +146,20 @@
     <a href="#contato">Contato</a>
   </nav>
 </header>
+
+<!-- HERO: slideshow de fundo com texto sobreposto -->
+<section class="hero" id="home">
+  <div class="slides" aria-hidden="true">
+    <div class="slide" style="background-image: url('images/slide1.jpg')"></div>
+    <div class="slide" style="background-image: url('images/slide2.jpg')"></div>
+    <div class="slide" style="background-image: url('images/slide3.jpg')"></div>
+  </div>
+  <div class="overlay" aria-hidden="true"></div>
+  <div class="content" aria-label="Apresentação">
+    <div class="kicker">Portfólio Juliana Cantanhede</div>
+    <h1 class="title">Design & Arte</h1>
+  </div>
+</section>
 
 <section id="sobre">
   <h2>Sobre mim</h2>
