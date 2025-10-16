@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Juliana Cantanhede — Design, Arte</title>
   <style>
-    /* HERO / SLIDES */
+
+    /* HERO / SLIDES (fade) */
     .hero {
       position: relative;
       height: 80vh;
@@ -19,23 +20,32 @@
     .hero .slides {
       position: absolute;
       inset: 0;
-      display: flex;
-      width: 300%; /* três slides */
-      transition: transform 1s ease;
+      z-index: 1;
     }
 
     .hero .slide {
-      flex: 0 0 33.3333%;
+      position: absolute;
+      inset: 0;
       background-size: cover;
       background-position: center;
-      height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      will-change: opacity;
+    }
+
+    .hero .slide.active {
+      opacity: 1;
+      z-index: 2;
     }
 
     .hero .overlay {
       position: absolute;
-      inset: 0;
-      background: linear-gradient(90deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.35) 50%, rgba(0,0,0,0) 100%);
-      mix-blend-mode: multiply;
+      left: 0;
+      top: 0;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, rgba(255,255,255,0.88) 0%, rgba(255,255,255,0.5) 50%, rgba(0,0,0,0) 100%);
+      z-index: 3;
       pointer-events: none;
     }
 
@@ -48,13 +58,13 @@
 
     .hero .kicker {
       font-size: 0.9rem;
-      color: #333;
+      color: rgba(0,0,0,0.6);
       margin-bottom: 12px;
     }
 
     .hero .title {
       font-size: 4.2rem;
-      color: #2f5b4f; /* verde suave semelhante ao exemplo */
+      color: #d89e5a; /* tom dourado/laranja próximo ao design */
       margin: 0;
       font-weight: 400;
     }
@@ -80,22 +90,31 @@
       width: 100%;
       background-color: #ffffffcc;
       backdrop-filter: blur(10px);
-      padding: 20px 50px;
+      padding: 14px 28px; /* reduzir padding para dar mais espaço */
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      gap: 40px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.05);
       z-index: 1000;
     }
     header h1 {
       margin: 0;
-      font-size: 1.8rem;
+      font-size: 1.6rem;
+      flex: 0 0 auto;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 22px; /* espaçamento consistente entre itens */
+      margin-left: 20px; /* empurra o menu levemente para a esquerda do header */
+      white-space: nowrap; /* evita quebra de linha entre itens do menu */
+      overflow: hidden;
     }
     nav a {
-      margin-left: 25px;
       text-decoration: none;
       color: #222;
       font-weight: 500;
+      padding: 6px 8px;
     }
     section {
       padding: 120px 50px 80px;
@@ -150,9 +169,14 @@
 <!-- HERO: slideshow de fundo com texto sobreposto -->
 <section class="hero" id="home">
   <div class="slides" aria-hidden="true">
-    <div class="slide" style="background-image: url('images/slide1.jpg')"></div>
+    <div class="slide active" style="background-image: url('images/slide1.jpg')"></div>
     <div class="slide" style="background-image: url('images/slide2.jpg')"></div>
     <div class="slide" style="background-image: url('images/slide3.jpg')"></div>
+    <div class="slide" style="background-image: url('images/slide4.jpg')"></div>
+    <div class="slide" style="background-image: url('images/slide5.jpg')"></div>
+    <div class="slide" style="background-image: url('images/slide6.jpg')"></div>
+    <div class="slide" style="background-image: url('images/slide7.jpg')"></div>
+    <div class="slide" style="background-image: url('images/slide8.jpg')"></div>
   </div>
   <div class="overlay" aria-hidden="true"></div>
   <div class="content" aria-label="Apresentação">
@@ -222,6 +246,21 @@
 <footer>
   &copy; 2025 Juliana Cantanhede. Todos os direitos reservados.
 </footer>
+
+<script>
+  // Carrossel simples por opacidade
+  (function(){
+    const slides = Array.from(document.querySelectorAll('.hero .slide'));
+    if (!slides.length) return;
+    let idx = 0;
+    const delay = 5000; // 5s
+    setInterval(() => {
+      slides[idx].classList.remove('active');
+      idx = (idx + 1) % slides.length;
+      slides[idx].classList.add('active');
+    }, delay);
+  })();
+</script>
 
 </body>
 </html>
