@@ -154,6 +154,65 @@
       text-align: center;
       color: #444;
     }
+    .saiba-mais-btn {
+      display: block;
+      width: 180px;
+      margin: 40px auto 0;
+      padding: 12px 24px;
+      background: transparent;
+      border: 2px solid #d89e5a;
+      color: #d89e5a;
+      text-decoration: none;
+      text-align: center;
+      font-family: 'Courier New', monospace;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .saiba-mais-btn:hover {
+      background: #d89e5a;
+      color: white;
+    }
+    .about-details {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease-in-out;
+      background-color: #fbfbfb;
+      margin-top: 40px;
+    }
+    .about-details.expanded {
+      max-height: 1000px;
+    }
+    .about-details-content {
+      display: flex;
+      align-items: flex-start;
+      padding: 60px;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .about-details-title {
+      font-size: 2.5rem;
+      color: #1f0047;
+      font-weight: 400;
+      margin: 0;
+      writing-mode: vertical-lr;
+      transform: rotate(180deg);
+      height: 100%;
+    }
+    .about-details-text {
+      font-family: 'Courier New', monospace;
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #444;
+      flex: 1;
+    }
+    .about-details-photo {
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 4px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
     .portfolio-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -214,6 +273,16 @@
     <br><br>
     Este espaço reúne um pouco da minha trajetória, mostrando como diferentes linguagens visuais se encontram para dar vida a projetos únicos.
   </p>
+  <button class="saiba-mais-btn" onclick="toggleAboutDetails()">Saiba mais</button>
+  <div class="about-details" id="aboutDetails">
+    <div class="about-details-content">
+      <h2 class="about-details-title">Sobre mim</h2>
+      <p class="about-details-text">
+        Sou uma designer apaixonada por criar experiências visuais impactantes. Meu trabalho combina criatividade, inovação e paixão por design. Estou sempre em busca de novos desafios e oportunidades para colaborar em projetos inspiradores.
+      </p>
+      <img src="images/foto.Juliana.jpg" alt="Juliana Cantanhede" class="about-details-photo">
+    </div>
+  </div>
 </section>
 
 <section id="videos">
@@ -298,6 +367,19 @@
     // Inicia o carrossel
     setInterval(nextSlide, delay);
   })();
+
+  // Função para expandir/recolher a seção "Saiba mais"
+  function toggleAboutDetails() {
+    const details = document.getElementById('aboutDetails');
+    details.classList.toggle('expanded');
+    
+    // Scroll suave até a seção expandida
+    if (details.classList.contains('expanded')) {
+      setTimeout(() => {
+        details.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 100);
+    }
+  }
 </script>
 
 </body>
