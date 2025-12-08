@@ -135,64 +135,112 @@
       padding: 6px 8px;
     }
     
-    /* Menu Hambúrguer */
-    .hamburger {
+    /* ========== MENU HAMBÚRGUER RESPONSIVO ========== */
+    
+    /* Botão Hambúrguer - Desktop Hidden */
+    .menu-toggle {
       display: none;
       flex-direction: column;
-      cursor: pointer;
+      justify-content: center;
+      align-items: center;
+      width: 32px;
+      height: 32px;
       background: none;
       border: none;
+      cursor: pointer;
       padding: 0;
-      gap: 6px;
-    }
-    .hamburger span {
-      width: 25px;
-      height: 3px;
-      background-color: #222;
-      border-radius: 2px;
-      transition: all 0.3s ease;
-    }
-    .hamburger.active span:nth-child(1) {
-      transform: rotate(45deg) translate(10px, 10px);
-    }
-    .hamburger.active span:nth-child(2) {
-      opacity: 0;
-    }
-    .hamburger.active span:nth-child(3) {
-      transform: rotate(-45deg) translate(7px, -7px);
+      margin: 0;
+      z-index: 1001;
     }
     
-    /* Menu Mobile */
+    .menu-toggle span {
+      width: 24px;
+      height: 2.5px;
+      background-color: #222;
+      margin: 4px 0;
+      transition: 0.3s;
+      display: block;
+      border-radius: 2px;
+    }
+    
+    /* Ícone Hambúrguer Ativo - Animação X */
+    .menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(8px, 8px);
+    }
+    
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+    
+    .menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -6px);
+    }
+    
+    /* ========== RESPONSIVIDADE MOBILE ========== */
     @media (max-width: 768px) {
-      .hamburger {
+      /* Mostrar botão hambúrguer */
+      .menu-toggle {
         display: flex;
       }
+      
+      /* Esconder menu tradicional */
       nav {
-        position: absolute;
+        position: fixed;
         top: 60px;
         left: 0;
         right: 0;
-        background-color: #ffffffdd;
-        backdrop-filter: blur(10px);
+        width: 100%;
+        background-color: #ffffff;
         flex-direction: column;
         gap: 0;
-        margin-left: 0;
-        white-space: normal;
-        overflow: visible;
+        padding: 0;
+        margin: 0;
         max-height: 0;
-        transition: max-height 0.3s ease;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        overflow: hidden;
+        transition: max-height 0.3s ease-in-out;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        z-index: 999;
       }
-      nav.active {
-        max-height: 500px;
+      
+      /* Menu Ativo - Mostrar */
+      nav.mobile-active {
+        max-height: 100vh;
       }
+      
+      /* Links do Menu Mobile */
       nav a {
         display: block;
-        padding: 16px 28px;
-        border-bottom: 1px solid rgba(0,0,0,0.05);
+        padding: 16px 24px;
+        border-bottom: 1px solid #f0f0f0;
+        text-decoration: none;
+        color: #222;
+        font-weight: 500;
+        transition: background-color 0.2s;
       }
+      
+      nav a:hover {
+        background-color: #f5f5f5;
+      }
+      
       nav a:last-child {
         border-bottom: none;
+      }
+      
+      /* Header responsivo */
+      header {
+        padding: 14px 16px;
+        gap: 0;
+      }
+      
+      .logo img {
+        height: 40px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      nav a {
+        padding: 14px 16px;
+        font-size: 0.95rem;
       }
     }
     section {
@@ -470,12 +518,8 @@
   <a href="#home" class="logo" aria-label="Página inicial">
     <img src="assets/Logo/1 (3).png" alt="Juliana Cantanhede" />
   </a>
-  <button class="hamburger" id="hamburger" aria-label="Menu">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
-  <nav aria-label="Menu principal" id="nav">
+  
+  <nav aria-label="Menu principal" id="menu">
     <a href="#sobre">Sobre mim</a>
     <a href="#videos">Vídeos</a>
     <a href="#social">Social Media</a>
@@ -485,6 +529,12 @@
     <a href="#fotos">Fotos</a>
     <a href="#contato">Contato</a>
   </nav>
+  
+  <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </header>
 
 <!-- HERO: slideshow de fundo com texto sobreposto -->
@@ -684,21 +734,43 @@
     updatePdfViewer();
   }
 
-  // Menu Hambúrguer
-  const hamburger = document.getElementById('hamburger');
-  const nav = document.getElementById('nav');
+  // ========== MENU HAMBÚRGUER RESPONSIVO ==========
   
-  hamburger.addEventListener('click', function() {
-    hamburger.classList.toggle('active');
-    nav.classList.toggle('active');
-  });
-  
-  // Fechar menu ao clicar em um link
-  const navLinks = nav.querySelectorAll('a');
-  navLinks.forEach(link => {
-    link.addEventListener('click', function() {
-      hamburger.classList.remove('active');
-      nav.classList.remove('active');
+  document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.getElementById('menuToggle');
+    const menu = document.getElementById('menu');
+    
+    // Abrir/Fechar Menu
+    menuToggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      menuToggle.classList.toggle('active');
+      menu.classList.toggle('mobile-active');
+      
+      // Atualizar aria-expanded para acessibilidade
+      const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', !isExpanded);
+    });
+    
+    // Fechar menu ao clicar em um link
+    const menuLinks = menu.querySelectorAll('a');
+    menuLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        menuToggle.classList.remove('active');
+        menu.classList.remove('mobile-active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+    
+    // Fechar menu ao clicar fora dele (opcional)
+    document.addEventListener('click', function(e) {
+      const isClickInsideMenu = menu.contains(e.target);
+      const isClickOnToggle = menuToggle.contains(e.target);
+      
+      if (!isClickInsideMenu && !isClickOnToggle && menu.classList.contains('mobile-active')) {
+        menuToggle.classList.remove('active');
+        menu.classList.remove('mobile-active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      }
     });
   });
 </script>
