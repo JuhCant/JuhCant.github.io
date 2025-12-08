@@ -107,11 +107,11 @@
       width: 100%;
       background-color: #ffffffcc;
       backdrop-filter: blur(10px);
-      padding: 14px 28px;
+      padding: 14px 40px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 40px;
+      gap: 60px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.05);
       z-index: 1000;
     }
@@ -123,10 +123,12 @@
     nav {
       display: flex;
       align-items: center;
-      gap: 22px;
-      margin-left: 20px;
+      gap: 28px;
+      margin-left: auto;
       white-space: nowrap;
       overflow: hidden;
+      flex: 1;
+      justify-content: flex-end;
     }
     nav a {
       text-decoration: none;
@@ -181,6 +183,7 @@
       /* Mostrar botão hambúrguer */
       .menu-toggle {
         display: flex;
+        order: 3;
       }
       
       /* Esconder menu tradicional */
@@ -228,12 +231,16 @@
       
       /* Header responsivo */
       header {
-        padding: 14px 16px;
-        gap: 0;
+        padding: 12px 16px;
+        gap: 12px;
       }
       
       .logo img {
-        height: 40px;
+        height: 36px;
+      }
+      
+      nav {
+        margin-left: 0;
       }
     }
     
