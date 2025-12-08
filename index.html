@@ -278,13 +278,23 @@
         padding: 12px 12px;
         min-height: 50px;
         overflow: visible;
-        justify-content: space-between;
+        justify-content: center;
+        position: relative;
+      }
+      
+      .logo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        order: 2;
       }
       
       /* Mostrar botão hambúrguer */
       .menu-toggle {
         display: flex;
-        order: 3;
+        order: 1;
+        position: absolute;
+        left: 12px;
       }
       
       /* Esconder menu tradicional */
