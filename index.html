@@ -1006,7 +1006,7 @@
       
       <!-- Indicador de fotos do projeto -->
       <div class="foto-counter">
-        <span class="foto-atual">1</span> / <span class="foto-total">5</span>
+        <span class="foto-atual">1</span> / <span class="foto-total">12</span>
       </div>
     </div>
 
@@ -1027,7 +1027,7 @@
       </div>
       
       <div class="foto-counter">
-        <span class="foto-atual">1</span> / <span class="foto-total">5</span>
+        <span class="foto-atual">1</span> / <span class="foto-total">15</span>
       </div>
     </div>
 
@@ -1048,7 +1048,7 @@
       </div>
       
       <div class="foto-counter">
-        <span class="foto-atual">1</span> / <span class="foto-total">5</span>
+        <span class="foto-atual">1</span> / <span class="foto-total">13</span>
       </div>
     </div>
 
@@ -1060,7 +1060,7 @@
         </button>
         
         <div class="galeria-wrapper">
-          <img class="foto-ativa" src="assets/ProjetosFaculdade/Projeto 4/1.jpg" alt="Projeto 4 - Foto 1">
+          <img class="foto-ativa" src="assets/ProjetosFaculdade/projeto 4/1.jpg" alt="Projeto 4 - Foto 1">
         </div>
         
         <button class="seta-foto seta-direita" onclick="nextFotoProject(4)" aria-label="Próxima foto">
@@ -1069,7 +1069,7 @@
       </div>
       
       <div class="foto-counter">
-        <span class="foto-atual">1</span> / <span class="foto-total">5</span>
+        <span class="foto-atual">1</span> / <span class="foto-total">7</span>
       </div>
     </div>
 
@@ -1090,7 +1090,28 @@
       </div>
       
       <div class="foto-counter">
-        <span class="foto-atual">1</span> / <span class="foto-total">5</span>
+        <span class="foto-atual">1</span> / <span class="foto-total">9</span>
+      </div>
+    </div>
+
+    <!-- Projeto 6 -->
+    <div class="projeto" data-projeto="6">
+      <div class="projeto-galeria">
+        <button class="seta-foto seta-esquerda" onclick="prevFotoProject(6)" aria-label="Foto anterior">
+          ‹
+        </button>
+        
+        <div class="galeria-wrapper">
+          <img class="foto-ativa" src="assets/ProjetosFaculdade/Projeto 6/1.jpg" alt="Projeto 6 - Foto 1">
+        </div>
+        
+        <button class="seta-foto seta-direita" onclick="nextFotoProject(6)" aria-label="Próxima foto">
+          ›
+        </button>
+      </div>
+      
+      <div class="foto-counter">
+        <span class="foto-atual">1</span> / <span class="foto-total">4</span>
       </div>
     </div>
 
@@ -1103,7 +1124,7 @@
     </button>
     
     <span class="projeto-counter">
-      Projeto <span id="projetoAtual">1</span> / 5
+      Projeto <span id="projetoAtual">1</span> / 6
     </span>
     
     <button class="seta-projeto seta-projeto-direita" onclick="nextProject()" aria-label="Próximo projeto">
@@ -1190,11 +1211,12 @@
 
   // Dados dos Projetos: [nome da pasta, quantidade de fotos]
   const projetos = [
-    { id: 1, pasta: 'Projeto 1', fotos: 5 },
-    { id: 2, pasta: 'Projeto 2', fotos: 5 },
-    { id: 3, pasta: 'Projeto 3', fotos: 5 },
-    { id: 4, pasta: 'Projeto 4', fotos: 5 },
-    { id: 5, pasta: 'Projeto 5', fotos: 5 }
+    { id: 1, pasta: 'Projeto 1', fotos: 12 },
+    { id: 2, pasta: 'Projeto 2', fotos: 15 },
+    { id: 3, pasta: 'Projeto 3', fotos: 13 },
+    { id: 4, pasta: 'projeto 4', fotos: 7 },
+    { id: 5, pasta: 'Projeto 5', fotos: 9 },
+    { id: 6, pasta: 'Projeto 6', fotos: 4 }
   ];
 
   // Índice do projeto atual
