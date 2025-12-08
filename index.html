@@ -46,6 +46,7 @@
       background-position: center center;
       background-size: cover;
       background-repeat: no-repeat;
+      background-attachment: fixed;
       opacity: 0;
       transition: opacity 1s ease-in-out;
       z-index: 2;
@@ -81,17 +82,71 @@
 
     .hero .title {
       font-size: 4.2rem;
-      color: #d89e5a; /* tom dourado/laranja próximo ao design */
+      color: #d89e5a;
       margin: 0;
       font-weight: 400;
     }
 
-    /* Responsividade */
+    /* Responsividade Desktop */
     @media (max-width: 900px) {
       .hero .content { padding-left: 30px; }
       .hero .title { font-size: 2.4rem; }
       .hero .slides { width: 300%; }
       .hero .slide { flex-basis: 100%; }
+    }
+    
+    /* Responsividade Mobile */
+    @media (max-width: 768px) {
+      .hero {
+        height: 70vh;
+        min-height: 400px;
+      }
+      
+      .hero .slide {
+        background-size: contain;
+        background-repeat: repeat;
+        background-attachment: scroll;
+      }
+      
+      .hero .overlay {
+        width: 100%;
+        background: linear-gradient(180deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 100%);
+      }
+      
+      .hero .content {
+        padding-left: 20px;
+        padding-right: 20px;
+        max-width: 100%;
+        text-align: center;
+      }
+      
+      .hero .title {
+        font-size: 2rem;
+      }
+      
+      .hero .kicker {
+        font-size: 0.85rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .hero {
+        height: 60vh;
+        min-height: 350px;
+      }
+      
+      .hero .content {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+      
+      .hero .title {
+        font-size: 1.6rem;
+      }
+      
+      .hero .kicker {
+        font-size: 0.8rem;
+      }
     }
 
     body {
