@@ -107,9 +107,10 @@
       width: 100%;
       background-color: #ffffffcc;
       backdrop-filter: blur(10px);
-      padding: 14px 28px; /* reduzir padding para dar mais espaço */
+      padding: 14px 28px;
       display: flex;
       align-items: center;
+      justify-content: space-between;
       gap: 40px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.05);
       z-index: 1000;
@@ -122,9 +123,9 @@
     nav {
       display: flex;
       align-items: center;
-      gap: 22px; /* espaçamento consistente entre itens */
-      margin-left: 20px; /* empurra o menu levemente para a esquerda do header */
-      white-space: nowrap; /* evita quebra de linha entre itens do menu */
+      gap: 22px;
+      margin-left: 20px;
+      white-space: nowrap;
       overflow: hidden;
     }
     nav a {
@@ -132,6 +133,67 @@
       color: #222;
       font-weight: 500;
       padding: 6px 8px;
+    }
+    
+    /* Menu Hambúrguer */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      gap: 6px;
+    }
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background-color: #222;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(10px, 10px);
+    }
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+    
+    /* Menu Mobile */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+      nav {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background-color: #ffffffdd;
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        gap: 0;
+        margin-left: 0;
+        white-space: normal;
+        overflow: visible;
+        max-height: 0;
+        transition: max-height 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      }
+      nav.active {
+        max-height: 500px;
+      }
+      nav a {
+        display: block;
+        padding: 16px 28px;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+      }
+      nav a:last-child {
+        border-bottom: none;
+      }
     }
     section {
       padding: 80px 50px 80px;
@@ -408,7 +470,12 @@
   <a href="#home" class="logo" aria-label="Página inicial">
     <img src="assets/Logo/1 (3).png" alt="Juliana Cantanhede" />
   </a>
-  <nav aria-label="Menu principal">
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <nav aria-label="Menu principal" id="nav">
     <a href="#sobre">Sobre mim</a>
     <a href="#videos">Vídeos</a>
     <a href="#social">Social Media</a>
@@ -616,6 +683,24 @@
     currentPdf = (currentPdf - 1 + pdfs.length) % pdfs.length;
     updatePdfViewer();
   }
+
+  // Menu Hambúrguer
+  const hamburger = document.getElementById('hamburger');
+  const nav = document.getElementById('nav');
+  
+  hamburger.addEventListener('click', function() {
+    hamburger.classList.toggle('active');
+    nav.classList.toggle('active');
+  });
+  
+  // Fechar menu ao clicar em um link
+  const navLinks = nav.querySelectorAll('a');
+  navLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      hamburger.classList.remove('active');
+      nav.classList.remove('active');
+    });
+  });
 </script>
 
 </body>
