@@ -48,12 +48,13 @@
       background-repeat: no-repeat;
       background-attachment: fixed;
       opacity: 0;
-      transition: opacity 1s ease-in-out;
+      transition: opacity 1.2s ease-in-out;
       z-index: 2;
     }
 
     .hero .slide.active {
       opacity: 1;
+      transition: opacity 1.2s ease-in-out;
     }
 
     .hero .overlay {
@@ -763,31 +764,32 @@
 </footer>
 
 <script>
-  // Carrossel com fade suave
+  // Carrossel com transição fade suave
   (function(){
     const slides = Array.from(document.querySelectorAll('.hero .slide'));
     if (!slides.length) return;
+    
     let idx = 0;
-    const delay = 6000; // 6s entre transições
-    const fadeTime = 1000; // 1s de transição
+    const delayBetweenSlides = 5000; // 5s de exibição
+    const fadeTransitionDuration = 1200; // 1.2s de transição suave
 
     function nextSlide() {
       const currentSlide = slides[idx];
       idx = (idx + 1) % slides.length;
       const nextSlide = slides[idx];
       
-      currentSlide.style.zIndex = 3;
-      nextSlide.style.zIndex = 2;
-      nextSlide.classList.add('active');
+      // Remove ativo do slide atual (fade out)
+      currentSlide.classList.remove('active');
       
-      setTimeout(() => {
-        currentSlide.classList.remove('active');
-        currentSlide.style.zIndex = 1;
-      }, fadeTime);
+      // Adiciona ativo ao próximo slide (fade in)
+      nextSlide.classList.add('active');
     }
 
-    // Inicia o carrossel
-    setInterval(nextSlide, delay);
+    // Inicializa o primeiro slide como ativo
+    slides[0].classList.add('active');
+    
+    // Inicia o carrossel automático
+    setInterval(nextSlide, delayBetweenSlides);
   })();
 
   // Função para expandir/recolher a seção "Saiba mais"
