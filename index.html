@@ -98,21 +98,21 @@
     /* Responsividade Mobile - 768px */
     @media (max-width: 768px) {
       .hero {
-        height: 50vh;
-        min-height: 300px;
-        align-items: flex-end;
-        padding-bottom: 60px;
+        height: 70vh;
+        min-height: 400px;
+        align-items: center;
+        padding-bottom: 0;
       }
       
       .hero .slides {
-        position: relative;
+        position: absolute;
         width: 100%;
         height: 100%;
         display: block;
       }
       
       .hero .slide {
-        position: relative;
+        position: absolute;
         width: 100%;
         height: 100%;
         background-size: cover;
@@ -124,47 +124,49 @@
       
       .hero .overlay {
         width: 100%;
-        background: linear-gradient(180deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%);
+        height: 100%;
+        background: linear-gradient(90deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
         position: absolute;
-        bottom: 0;
+        left: 0;
+        top: 0;
       }
       
       .hero .content {
-        padding-left: 16px;
-        padding-right: 16px;
+        padding-left: 24px;
+        padding-right: 24px;
         max-width: 100%;
-        text-align: center;
+        text-align: left;
         position: relative;
+        z-index: 5;
       }
       
       .hero .title {
-        font-size: 1.8rem;
+        font-size: 2rem;
       }
       
       .hero .kicker {
-        font-size: 0.8rem;
+        font-size: 0.85rem;
       }
     }
     
     /* Responsividade Mobile - 480px */
     @media (max-width: 480px) {
       .hero {
-        height: 45vh;
-        min-height: 280px;
-        padding-bottom: 50px;
+        height: 60vh;
+        min-height: 350px;
       }
       
       .hero .content {
-        padding-left: 12px;
-        padding-right: 12px;
+        padding-left: 16px;
+        padding-right: 16px;
       }
       
       .hero .title {
-        font-size: 1.4rem;
+        font-size: 1.6rem;
       }
       
       .hero .kicker {
-        font-size: 0.75rem;
+        font-size: 0.8rem;
       }
     }
 
