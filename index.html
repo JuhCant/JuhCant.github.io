@@ -1439,7 +1439,7 @@
         </button>
         
         <div class="galeria-wrapper">
-          <img class="foto-ativa" src="assets/ProjetosFaculdade/Projeto%206/1.png" alt="Projeto 6 - Foto 1">
+          <img class="foto-ativa" src="assets/ProjetosFaculdade/Projeto%206/ 1.png" alt="Projeto 6 - Foto 1">
         </div>
         
         <button class="seta-foto seta-direita" onclick="nextFotoProject(6)" aria-label="Próxima foto">
@@ -1867,7 +1867,7 @@
     // Atualizar imagem
     const projetoEl = document.querySelector(`.projeto[data-projeto="${projetoId}"]`);
     const img = projetoEl.querySelector('.foto-ativa');
-    img.src = `assets/ProjetosFaculdade/${projeto.pasta}/${novaFotoNum}.png`;
+    img.src = `assets/ProjetosFaculdade/${projeto.pasta}/ ${novaFotoNum}.png`;
     img.alt = `${projeto.pasta} - Foto ${novaFotoNum}`;
 
     // Atualizar contador
