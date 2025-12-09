@@ -647,17 +647,16 @@
     }
     .foto-item {
       position: relative;
-      aspect-ratio: 1;
       overflow: hidden;
-      max-width: 280px;
+      max-width: 350px;
       margin: 0 auto;
     }
     .foto-item img {
       width: 100%;
-      height: 100%;
+      height: auto;
       display: block;
       border-radius: 8px;
-      object-fit: cover;
+      object-fit: contain;
       cursor: pointer;
       transition: transform 0.3s ease;
     }
