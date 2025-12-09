@@ -619,20 +619,25 @@
       display: block;
     }
     .identidade-container {
-      width: 100%;
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
       display: flex;
       justify-content: center;
-      max-width: 1200px;
-      margin: 0 auto;
+      padding: 0;
     }
     .identidade-full {
       width: 100%;
       max-width: 100%;
       height: auto;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(86,57,0,0.1);
-      object-fit: contain;
+      border-radius: 0;
+      box-shadow: none;
+      object-fit: cover;
       display: block;
+    }
     }
     .fotos-grid {
       display: grid;
