@@ -646,12 +646,15 @@
     }
     .foto-item {
       position: relative;
+      aspect-ratio: 350 / 420;
+      overflow: hidden;
     }
     .foto-item img {
       width: 100%;
-      height: auto;
+      height: 100%;
       display: block;
       border-radius: 8px;
+      object-fit: cover;
     }
     .foto-label {
       position: absolute;
