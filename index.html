@@ -384,6 +384,7 @@
       /* Links do Menu Mobile */
       nav a {
         display: block;
+        width: 100%;
         padding: 16px 24px;
         border-bottom: 1px solid #f0f0f0;
         text-decoration: none;
@@ -391,6 +392,8 @@
         font-weight: 500;
         transition: background-color 0.2s;
         white-space: normal;
+        box-sizing: border-box;
+        text-align: center;
       }
       
       nav a:hover {
@@ -398,6 +401,56 @@
       }
       
       nav a:last-child {
+        border-bottom: none;
+      }
+      
+      .nav-item.dropdown {
+        display: block;
+        width: 100%;
+        list-style: none;
+      }
+      
+      .nav-item.dropdown .nav-link {
+        display: block;
+        width: 100%;
+        padding: 16px 24px;
+        text-align: center;
+        border-bottom: 1px solid #f0f0f0;
+      }
+      
+      .dropdown-menu {
+        position: static;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 1;
+        visibility: visible;
+        background: #f9f9f9;
+        border: none;
+        box-shadow: none;
+        transform: none;
+        width: 100%;
+        min-width: 100%;
+        padding: 0;
+        margin: 0;
+        transition: max-height 0.3s ease;
+      }
+      
+      .nav-item.dropdown.active .dropdown-menu {
+        max-height: 300px;
+      }
+      
+      .dropdown-link {
+        display: block;
+        width: 100%;
+        padding: 12px 24px 12px 40px;
+        text-align: center;
+        border-bottom: 1px solid #f0f0f0;
+        background: #f9f9f9;
+        text-decoration: none;
+        color: #563900;
+      }
+      
+      .dropdown-link:last-child {
         border-bottom: none;
       }
       
