@@ -643,11 +643,15 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 20px;
+      max-width: 800px;
+      margin: 0 auto;
     }
     .foto-item {
       position: relative;
       aspect-ratio: 1;
       overflow: hidden;
+      max-width: 280px;
+      margin: 0 auto;
     }
     .foto-item img {
       width: 100%;
@@ -655,6 +659,11 @@
       display: block;
       border-radius: 8px;
       object-fit: cover;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .foto-item img:hover {
+      transform: scale(1.05);
     }
     .foto-label {
       position: absolute;
@@ -670,6 +679,10 @@
     @media (max-width: 600px) {
       .fotos-grid {
         grid-template-columns: 1fr;
+        max-width: 300px;
+      }
+      .foto-item {
+        max-width: 250px;
       }
     }
 
