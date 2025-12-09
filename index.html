@@ -825,7 +825,7 @@
         opacity: 0;
         visibility: hidden;
         max-height: 0;
-        overflow: hidden;
+        overflow: visible;
         transform: none;
         transition: all 0.3s ease;
         box-shadow: none;
@@ -833,12 +833,13 @@
         background: #f9f9f9;
         margin-top: 8px;
         text-align: center;
+        width: 100%;
       }
 
       .nav-item.dropdown.active .dropdown-menu {
         opacity: 1;
         visibility: visible;
-        max-height: 500px;
+        max-height: 1000px;
       }
 
       .dropdown-link {
