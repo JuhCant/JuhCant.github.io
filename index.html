@@ -739,6 +739,284 @@
       text-align: center;
     }
 
+    /* ========== ESTILOS DO ÍCONE (?) E PAINEL DE DESCRIÇÃO ========== */
+
+    .projeto-header {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      gap: 10px;
+    }
+
+    .projeto-titulo {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: #563900;
+    }
+
+    /* Ícone de interrogação */
+    .info-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      background: #d89e5a;
+      color: #fff;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      font-weight: bold;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .info-icon:hover {
+      background: #c2854a;
+      transform: scale(1.1);
+    }
+
+    /* Tooltip do Info Icon */
+    .info-icon .tooltip-text {
+      visibility: hidden;
+      opacity: 0;
+      position: absolute;
+      bottom: 140%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #563900;
+      color: #fff;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 400;
+      font-family: 'Helvetica Neue', sans-serif;
+      width: 280px;
+      text-align: center;
+      line-height: 1.5;
+      box-shadow: 0 4px 12px rgba(86, 57, 0, 0.2);
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      z-index: 100;
+      white-space: normal;
+    }
+
+    .info-icon .tooltip-text::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 8px;
+      border-style: solid;
+      border-color: #563900 transparent transparent transparent;
+    }
+
+    .info-icon:hover .tooltip-text {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    /* Painel de Descrição do Projeto */
+    .projeto-description-panel {
+      position: fixed;
+      right: 0;
+      top: 60px;
+      width: 0;
+      height: calc(100vh - 60px);
+      background: #fff;
+      box-shadow: -4px 0 12px rgba(86, 57, 0, 0.1);
+      overflow-y: auto;
+      transition: width 0.4s ease;
+      z-index: 998;
+      padding: 0;
+    }
+
+    .projeto-description-panel.open {
+      width: 380px;
+    }
+
+    .description-content {
+      padding: 30px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      opacity: 0;
+      transition: opacity 0.3s ease 0.1s;
+    }
+
+    .projeto-description-panel.open .description-content {
+      opacity: 1;
+    }
+
+    .description-close-btn {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      width: 32px;
+      height: 32px;
+      background: #d89e5a;
+      border: none;
+      color: #fff;
+      border-radius: 4px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+
+    .description-close-btn:hover {
+      background: #c2854a;
+      transform: scale(1.1);
+    }
+
+    .description-title {
+      font-size: 1.5rem;
+      color: #d89e5a;
+      font-weight: 500;
+      margin-top: 20px;
+      line-height: 1.4;
+    }
+
+    .description-text {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: #563900;
+      font-family: 'Helvetica Neue', sans-serif;
+    }
+
+    .description-text strong {
+      color: #1f0047;
+      font-weight: 600;
+    }
+
+    .description-section {
+      margin-bottom: 20px;
+    }
+
+    .description-section-title {
+      font-weight: 600;
+      color: #563900;
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+
+    /* Overlay quando painel está aberto */
+    .description-overlay {
+      display: none;
+      position: fixed;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      height: calc(100vh - 60px);
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 997;
+      transition: opacity 0.3s ease;
+    }
+
+    .description-overlay.active {
+      display: block;
+    }
+
+    /* Responsividade - Desktop */
+    @media (max-width: 1024px) {
+      .projeto-description-panel {
+        width: 0;
+      }
+
+      .projeto-description-panel.open {
+        width: 350px;
+      }
+
+      .description-content {
+        padding: 25px 18px;
+      }
+
+      .description-title {
+        font-size: 1.3rem;
+      }
+
+      .description-text {
+        font-size: 0.9rem;
+      }
+    }
+
+    /* Responsividade - Tablet */
+    @media (max-width: 768px) {
+      .projeto-description-panel {
+        position: fixed;
+        top: auto;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        width: 100%;
+        height: 0;
+        border-radius: 20px 20px 0 0;
+        box-shadow: 0 -4px 12px rgba(86, 57, 0, 0.1);
+        transition: height 0.4s ease;
+      }
+
+      .projeto-description-panel.open {
+        width: 100%;
+        height: 70vh;
+        max-height: 70vh;
+      }
+
+      .description-content {
+        padding: 30px 20px;
+      }
+
+      .description-close-btn {
+        top: 10px;
+        right: 10px;
+      }
+
+      .description-overlay {
+        display: none !important;
+      }
+    }
+
+    /* Responsividade - Mobile */
+    @media (max-width: 480px) {
+      .projeto-description-panel.open {
+        height: 80vh;
+        max-height: 80vh;
+      }
+
+      .description-content {
+        padding: 25px 15px;
+      }
+
+      .description-title {
+        font-size: 1.2rem;
+      }
+
+      .description-text {
+        font-size: 0.88rem;
+      }
+
+      .info-icon {
+        width: 24px;
+        height: 24px;
+        font-size: 1rem;
+      }
+
+      .info-icon .tooltip-text {
+        width: 240px;
+        font-size: 0.8rem;
+        bottom: 120%;
+      }
+
+      .projeto-titulo {
+        font-size: 1.1rem;
+      }
+    }
+
     /* Responsividade */
     @media (max-width: 768px) {
       .projetos-container {
@@ -984,13 +1262,33 @@
 <section id="projetos">
   <h2>Projetos</h2>
   
+  <!-- Overlay para fechar painel -->
+  <div class="description-overlay" id="descriptionOverlay"></div>
+
+  <!-- Painel de Descrição (Lateral ou Inferior) -->
+  <div class="projeto-description-panel" id="descriptionPanel">
+    <button class="description-close-btn" onclick="closeProjectDescription()" aria-label="Fechar descrição">
+      ×
+    </button>
+    <div class="description-content" id="descriptionContent">
+      <!-- Conteúdo será preenchido dinamicamente por JS -->
+    </div>
+  </div>
+  
   <!-- Container Principal de Projetos -->
   <div class="projetos-container">
     
-    <!-- Projeto 1 -->
+    <!-- Projeto 1: A Marca no Filme -->
     <div class="projeto active" data-projeto="1">
+      <div class="projeto-header">
+        <span class="projeto-titulo">A Marca no Filme</span>
+        <div class="info-icon" onclick="openProjectDescription(1)" aria-label="Informações sobre o projeto">
+          ?
+          <span class="tooltip-text">Clique para ver a descrição completa do projeto</span>
+        </div>
+      </div>
+
       <div class="projeto-galeria">
-        <!-- Setas Laterais para trocar fotos do projeto -->
         <button class="seta-foto seta-esquerda" onclick="prevFotoProject(1)" aria-label="Foto anterior">
           ‹
         </button>
@@ -1004,14 +1302,21 @@
         </button>
       </div>
       
-      <!-- Indicador de fotos do projeto -->
       <div class="foto-counter">
         <span class="foto-atual">1</span> / <span class="foto-total">12</span>
       </div>
     </div>
 
-    <!-- Projeto 2 -->
+    <!-- Projeto 2: Criando uma Marca de Roupas para Jovens -->
     <div class="projeto" data-projeto="2">
+      <div class="projeto-header">
+        <span class="projeto-titulo">Marca de Roupas para Jovens</span>
+        <div class="info-icon" onclick="openProjectDescription(2)" aria-label="Informações sobre o projeto">
+          ?
+          <span class="tooltip-text">Clique para ver a descrição completa do projeto</span>
+        </div>
+      </div>
+
       <div class="projeto-galeria">
         <button class="seta-foto seta-esquerda" onclick="prevFotoProject(2)" aria-label="Foto anterior">
           ‹
@@ -1031,8 +1336,16 @@
       </div>
     </div>
 
-    <!-- Projeto 3 -->
+    <!-- Projeto 3: Comparando Estratégias de Marcas -->
     <div class="projeto" data-projeto="3">
+      <div class="projeto-header">
+        <span class="projeto-titulo">Global x Nacional</span>
+        <div class="info-icon" onclick="openProjectDescription(3)" aria-label="Informações sobre o projeto">
+          ?
+          <span class="tooltip-text">Clique para ver a descrição completa do projeto</span>
+        </div>
+      </div>
+
       <div class="projeto-galeria">
         <button class="seta-foto seta-esquerda" onclick="prevFotoProject(3)" aria-label="Foto anterior">
           ‹
@@ -1052,8 +1365,16 @@
       </div>
     </div>
 
-    <!-- Projeto 4 -->
+    <!-- Projeto 4: Collab com o Tinder -->
     <div class="projeto" data-projeto="4">
+      <div class="projeto-header">
+        <span class="projeto-titulo">Collab com Tinder</span>
+        <div class="info-icon" onclick="openProjectDescription(4)" aria-label="Informações sobre o projeto">
+          ?
+          <span class="tooltip-text">Clique para ver a descrição completa do projeto</span>
+        </div>
+      </div>
+
       <div class="projeto-galeria">
         <button class="seta-foto seta-esquerda" onclick="prevFotoProject(4)" aria-label="Foto anterior">
           ‹
@@ -1073,8 +1394,16 @@
       </div>
     </div>
 
-    <!-- Projeto 5 -->
+    <!-- Projeto 5: A Marca e a Comunidade do Orkut -->
     <div class="projeto" data-projeto="5">
+      <div class="projeto-header">
+        <span class="projeto-titulo">Marca x Comunidade Orkut</span>
+        <div class="info-icon" onclick="openProjectDescription(5)" aria-label="Informações sobre o projeto">
+          ?
+          <span class="tooltip-text">Clique para ver a descrição completa do projeto</span>
+        </div>
+      </div>
+
       <div class="projeto-galeria">
         <button class="seta-foto seta-esquerda" onclick="prevFotoProject(5)" aria-label="Foto anterior">
           ‹
@@ -1094,8 +1423,16 @@
       </div>
     </div>
 
-    <!-- Projeto 6 -->
+    <!-- Projeto 6: A Campanha Surpresa -->
     <div class="projeto" data-projeto="6">
+      <div class="projeto-header">
+        <span class="projeto-titulo">Campanha Surpresa</span>
+        <div class="info-icon" onclick="openProjectDescription(6)" aria-label="Informações sobre o projeto">
+          ?
+          <span class="tooltip-text">Clique para ver a descrição completa do projeto</span>
+        </div>
+      </div>
+
       <div class="projeto-galeria">
         <button class="seta-foto seta-esquerda" onclick="prevFotoProject(6)" aria-label="Foto anterior">
           ‹
@@ -1206,6 +1543,266 @@
       }, 100);
     }
   }
+
+  // ========== DADOS DOS PROJETOS COM DESCRIÇÕES ==========
+
+  const projetosData = [
+    {
+      id: 1,
+      titulo: 'A Marca no Filme',
+      descricao: `
+        <div class="description-section">
+          <div class="description-title">A Marca no Filme</div>
+          <p class="description-text">
+            Este projeto aborda o conceito de <strong>product placement</strong>, que consiste na inserção estratégica de marcas dentro de filmes de maneira natural, integrada ao enredo.
+          </p>
+        </div>
+
+        <div class="description-section">
+          <div class="description-section-title">Objetivo</div>
+          <p class="description-text">
+            Analisar como uma marca pode reforçar a narrativa e se beneficiar da visibilidade cinematográfica.
+          </p>
+        </div>
+
+        <div class="description-section">
+          <div class="description-section-title">Entrega</div>
+          <p class="description-text">
+            • <strong>Nome do filme</strong><br>
+            • <strong>Nome da marca</strong><br>
+            • <strong>Justificativa</strong> da escolha<br>
+            • <strong>Descrição da cena</strong> criada
+          </p>
+        </div>
+
+        <div class="description-section">
+          <div class="description-section-title">Bônus</div>
+          <p class="description-text">
+            Trazendo um Produto da Ficção para o Mundo Real: escolher um produto fictício de séries, filmes, jogos ou animações e adaptá-lo à realidade.
+          </p>
+        </div>
+      `
+    },
+    {
+      id: 2,
+      titulo: 'Marca de Roupas para Jovens',
+      descricao: `
+        <div class="description-section">
+          <div class="description-title">Criando uma Marca de Roupas para Jovens</div>
+          <p class="description-text">
+            Este trabalho integra pesquisa, criação de identidade de marca e estratégia de comunicação voltada ao público jovem.
+          </p>
+        </div>
+
+        <div class="description-section">
+          <div class="description-section-title">Processo</div>
+          <p class="description-text">
+            1. Estudar como os jovens consomem e se comunicam<br>
+            2. Identificar o que valorizam nas marcas<br>
+            3. Criar identidade completa da marca
+          </p>
+        </div>
+
+        <div class="description-section">
+          <div class="description-section-title">Entrega</div>
+          <p class="description-text">
+            • <strong>Nome, conceito e valores</strong><br>
+            • <strong>Persona</strong> e tom de voz<br>
+            • <strong>Estratégia de marketing</strong><br>
+            • <strong>Campanha integrada</strong> de comunicação
+          </p>
+        </div>
+      `
+    },
+    {
+      id: 3,
+      titulo: 'Comparando Estratégias: Global x Nacional',
+      descricao: `
+        <div class="description-section">
+          <div class="description-title">Global x Nacional</div>
+          <p class="description-text">
+            Analisar como marcas de portes distintos constroem sua identidade visual e se comunicam nas redes sociais.
+          </p>
+        </div>
+
+        <div class="description-section">
+          <div class="description-section-title">Seleção</div>
+          <p class="description-text">
+            • <strong>Uma marca global</strong> (grande escala)<br>
+            • <strong>Uma marca brasileira</strong> de porte médio ou pequeno
+          </p>
+        </div>
+
+        <div class="description-section">
+          <div class="description-section-title">Análise</div>
+          <p class="description-text">
+            • Identidade visual e estilo gráfico<br>
+            • Tom de voz<br>
+            • Presença e conteúdo nas redes sociais
+          </p>
+        </div>
+
+        <div class="description-section">
+          <div class="description-section-title">Comparação</div>
+          <p class="description-text">
+            Destaque diferenças, semelhanças e como o tamanho das empresas influencia suas práticas.
+          </p>
+        </div>
+      `
+    },
+    {
+      id: 4,
+      titulo: 'Collab com o Tinder',
+      descricao: `
+        <div class="description-section">
+          <div class="description-title">Collab com o Tinder</div>
+          <p class="description-text">
+            Explorar o potencial das colaborações entre marcas através de uma proposta imaginativa com o Tinder.
+          </p>
+        </div>
+
+        <div class="description-section">
+          <div class="description-section-title">Seleção</div>
+          <p class="description-text">
+            Escolha uma empresa brasileira de porte médio ou pequeno.
+          </p>
+        </div>
+
+        <div class="description-section">
+          <div class="description-section-title">Entrega</div>
+          <p class="description-text">
+            • <strong>Apresentação da empresa</strong><br>
+            • <strong>Proposta</strong> da colaboração<br>
+            • <strong>Nome, duração, objetivo</strong> e público-alvo<br>
+            • <strong>Ações promocionais</strong><br>
+            • <strong>Estratégia de marketing</strong> digital
+          </p>
+        </div>
+      `
+    },
+    {
+      id: 5,
+      titulo: 'A Marca e a Comunidade do Orkut',
+      descricao: `
+        <div class="description-section">
+          <div class="description-title">A Marca e a Comunidade do Orkut</div>
+          <p class="description-text">
+            Combinar estratégia digital com resgate cultural, propondo uma adaptação das antigas comunidades do Orkut como ferramenta atual de engajamento.
+          </p>
+        </div>
+
+        <div class="description-section">
+          <div class="description-section-title">Processo</div>
+          <p class="description-text">
+            1. Escolher uma marca real<br>
+            2. Analisar sua história e comportamento digital<br>
+            3. Criar comunidade fictícia (estilo Orkut)
+          </p>
+        </div>
+
+        <div class="description-section">
+          <div class="description-section-title">Entrega</div>
+          <p class="description-text">
+            • <strong>Análise da empresa</strong><br>
+            • <strong>Nome e descrição</strong> da comunidade<br>
+            • <strong>Objetivo</strong> da iniciativa<br>
+            • <strong>Ações de engajamento</strong> nostálgicas<br>
+            • <strong>Benefícios</strong> para a marca
+          </p>
+        </div>
+      `
+    },
+    {
+      id: 6,
+      titulo: 'A Campanha Surpresa',
+      descricao: `
+        <div class="description-section">
+          <div class="description-title">A Campanha Surpresa</div>
+          <p class="description-text">
+            Criar uma campanha digital com reviravolta, inspirada no <strong>marketing de emboscada</strong>.
+          </p>
+        </div>
+
+        <div class="description-section">
+          <div class="description-section-title">Conceito</div>
+          <p class="description-text">
+            Um anúncio que aparenta ser de um tema ou marca, mas ao clicar, revela outra marca com mensagem estratégica.
+          </p>
+        </div>
+
+        <div class="description-section">
+          <div class="description-section-title">Entrega</div>
+          <p class="description-text">
+            • <strong>Evento escolhido</strong> (Copa, Carnaval, Olimpíadas)<br>
+            • <strong>Conceito</strong> com duplo sentido<br>
+            • <strong>Marca coerente</strong> com a ação<br>
+            • <strong>Texto e visual</strong> do anúncio<br>
+            • <strong>Objetivo e mensagem</strong><br>
+            • <strong>Produto especial</strong> para o evento
+          </p>
+        </div>
+      `
+    }
+  ];
+
+  // ========== FUNÇÕES DE GERENCIAMENTO DO PAINEL DE DESCRIÇÃO ==========
+
+  /**
+   * Abre o painel de descrição de um projeto
+   * @param {number} projetoId - ID do projeto
+   */
+  function openProjectDescription(projetoId) {
+    const projeto = projetosData.find(p => p.id === projetoId);
+    if (!projeto) return;
+
+    const panel = document.getElementById('descriptionPanel');
+    const content = document.getElementById('descriptionContent');
+    const overlay = document.getElementById('descriptionOverlay');
+
+    // Preencher conteúdo
+    content.innerHTML = projeto.descricao;
+
+    // Ativar painel e overlay
+    panel.classList.add('open');
+    overlay.classList.add('active');
+
+    // Scroll para o topo do painel
+    panel.scrollTop = 0;
+
+    // Impedir scroll da página em mobile
+    if (window.innerWidth <= 768) {
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  /**
+   * Fecha o painel de descrição
+   */
+  function closeProjectDescription() {
+    const panel = document.getElementById('descriptionPanel');
+    const overlay = document.getElementById('descriptionOverlay');
+
+    panel.classList.remove('open');
+    overlay.classList.remove('active');
+
+    // Restaurar scroll da página
+    document.body.style.overflow = 'auto';
+  }
+
+  // Fechar painel ao clicar no overlay
+  document.addEventListener('DOMContentLoaded', function() {
+    const overlay = document.getElementById('descriptionOverlay');
+    if (overlay) {
+      overlay.addEventListener('click', closeProjectDescription);
+    }
+
+    // Fechar com ESC
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeProjectDescription();
+      }
+    });
+  });
 
   // ========== GERENCIAMENTO DE PROJETOS ==========
 
