@@ -554,13 +554,13 @@
     }
     .about-details-content {
       display: flex;
-      flex-direction: column;
-      align-items: center;
+      flex-direction: row;
+      align-items: flex-start;
       padding: 60px;
-      gap: 30px;
-      max-width: 800px;
+      gap: 40px;
+      max-width: 1200px;
       margin: 0 auto;
-      text-align: center;
+      text-align: left;
     }
     .about-details-title {
       font-size: 2rem;
@@ -575,10 +575,17 @@
       color: #563900;
     }
     .about-details-photo {
-      width: 1200px;
-      height: 900px;
-      object-fit: cover;
+      width: 350px;
+      height: auto;
+      object-fit: contain;
       border-radius: 8px;
+      flex-shrink: 0;
+    }
+    .about-details-text-wrapper {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
     }
     .portfolio-grid {
       display: grid;
@@ -1372,11 +1379,13 @@
   </div>
   <div class="about-details" id="aboutDetails">
     <div class="about-details-content">
-      <h2 class="about-details-title">Sobre mim</h2>
       <img src="assets/about-me/IMG_1921.jpeg" alt="Juliana Cantanhede" class="about-details-photo">
-      <p class="about-details-text">
-        Sou uma designer apaixonada por criar experiências visuais marcantes. Meu trabalho une criatividade, inovação e sensibilidade, sempre buscando transformar ideias em algo que realmente faça sentido para as pessoas. Estou constantemente aprimorando minhas habilidades e adoro colaborar em projetos inspiradores, onde posso contribuir para o crescimento da equipe e aprender junto. Motivada pelo desejo de conquistar minha independência e alcançar meus objetivos, estou pronta para explorar novas oportunidades e aplicar tudo o que venho construindo em um novo desafio.
-      </p>
+      <div class="about-details-text-wrapper">
+        <h2 class="about-details-title">Sobre mim</h2>
+        <p class="about-details-text">
+          Sou uma designer apaixonada por criar experiências visuais marcantes. Meu trabalho une criatividade, inovação e sensibilidade, sempre buscando transformar ideias em algo que realmente faça sentido para as pessoas. Estou constantemente aprimorando minhas habilidades e adoro colaborar em projetos inspiradores, onde posso contribuir para o crescimento da equipe e aprender junto. Motivada pelo desejo de conquistar minha independência e alcançar meus objetivos, estou pronta para explorar novas oportunidades e aplicar tudo o que venho construindo em um novo desafio.
+        </p>
+      </div>
     </div>
   </div>
 </section>
